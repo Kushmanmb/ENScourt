@@ -11,19 +11,19 @@ contract ArbitratorStaking {
 
     mapping (address => uint256) public stakes;
 
-    event Staked(address indexed user, uint256 amount, uint256 total, bytes data);
-    event Unstaked(address indexed user, uint256 amount, uint256 total, bytes data);
+    event Staked(address indexed user, uint256 amount, uint256 total, bytes32 data);
+    event Unstaked(address indexed user, uint256 amount, uint256 total, bytes32 data);
 
     /// @notice Stakes a certain amount of tokens.
     /// @param data Data field used for signalling in more complex staking applications.
-    function stake(uint256, bytes data) public payable {
+    function stake(uint256, bytes32 data) public payable {
         stakeFor(msg.sender, 0, data);
     }
 
     /// @notice Stakes a certain amount of tokens for another user.
     /// @param user Address of the user to stake for.
     /// @param data Data field used for signalling in more complex staking applications.
-    function stakeFor(address user, uint256, bytes data) public payable {
+    function stakeFor(address user, uint256, bytes32 data) public payable {
         uint256 amount = msg.value;
 
         stakes[user] = stakes[user].add(amount);
@@ -34,7 +34,7 @@ contract ArbitratorStaking {
     /// @notice Unstakes a certain amount of tokens.
     /// @param amount Amount of tokens to unstake.
     /// @param data Data field used for signalling in more complex staking applications.
-    function unstake(uint256 amount, bytes data) public {
+    function unstake(uint256 amount, bytes32 data) public {
         require(totalStakedFor(msg.sender) >= amount);
 
         // @todo ensure arbitrator is allowed to unstake, depending on mechanism arbitrators must wait until all

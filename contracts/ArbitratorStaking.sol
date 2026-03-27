@@ -9,7 +9,7 @@ contract ArbitratorStaking {
 
     using SafeMath for uint256;
 
-    mapping (address => uint) public stakes;
+    mapping (address => uint256) public stakes;
 
     event Staked(address indexed user, uint256 amount, uint256 total, bytes data);
     event Unstaked(address indexed user, uint256 amount, uint256 total, bytes data);
@@ -24,7 +24,7 @@ contract ArbitratorStaking {
     /// @param user Address of the user to stake for.
     /// @param data Data field used for signalling in more complex staking applications.
     function stakeFor(address user, uint256, bytes data) public payable {
-        uint amount = msg.value;
+        uint256 amount = msg.value;
 
         stakes[user] = stakes[user].add(amount);
 

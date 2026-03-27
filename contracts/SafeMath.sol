@@ -2,26 +2,26 @@ pragma solidity ^0.4.23;
 
 library SafeMath {
 
-    function mul(uint a, uint b) internal pure returns (uint) {
-        uint c = a * b;
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a * b;
         assert(a == 0 || c / a == b);
         return c;
     }
 
-    function div(uint a, uint b) internal pure returns (uint) {
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b > 0);
-        uint c = a / b;
+        uint256 c = a / b;
         assert(a == b * c + a % b);
         return c;
     }
 
-    function sub(uint a, uint b) internal pure returns (uint) {
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
         assert(b <= a);
         return a - b;
     }
 
-    function add(uint a, uint b) internal pure returns (uint) {
-        uint c = a + b;
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
         assert(c >= a);
         return c;
     }
@@ -34,11 +34,11 @@ library SafeMath {
         return a < b ? a : b;
     }
 
-    function max256(uint a, uint b) internal pure returns (uint) {
+    function max256(uint256 a, uint256 b) internal pure returns (uint256) {
         return a >= b ? a : b;
     }
 
-    function min256(uint a, uint b) internal pure returns (uint) {
+    function min256(uint256 a, uint256 b) internal pure returns (uint256) {
         return a < b ? a : b;
     }
 }
